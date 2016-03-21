@@ -1,6 +1,6 @@
-angular.module('app',['ngResource','ngRoute']);
+var app = angular.module('app',['ngResource','ngRoute']);
 
-angular.module('app').config(function($routeProvider, $locationProvider){
+app.config(function($routeProvider, $locationProvider){
     $locationProvider.html5Mode({
         enabled: true,
         requireBase: false
@@ -9,6 +9,6 @@ angular.module('app').config(function($routeProvider, $locationProvider){
         .when('/',{templateUrl:'/partials/main', controller:'mainController'})
 });
 
-angular.module('app').controller('mainController', function($scope){
+app.controller('mainController', function($scope){
     $scope.myVar = "Hello world angular";
 })

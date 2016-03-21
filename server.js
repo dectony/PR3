@@ -12,7 +12,7 @@ function compile(str, path){
 }
 
 var env = process.env.NODE_ENV || 'development';
-if ('development' == env) {
+//if ('development' == env) {
     app.set('views', __dirname + '/Server/views');
     app.set('view engine', 'jade');
     app.use(morgan('dev'));
@@ -23,9 +23,15 @@ if ('development' == env) {
             compile: compile
         }));
     app.use(express.static(__dirname + '/Public'));
+//}
+
+if(env == 'development'){
+    mongoose.connect('mongodb://localhost/PR3');
+}
+else{
+    mongoose.connect('mongodb://dectony:5145muZZle.pr3@ds015869.mlab.com:15869/pr3');
 }
 
-mongoose.connect('mongodb://localhost/PR3');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console,'connection error...'));
 db.once('open', function callback(){
@@ -48,7 +54,7 @@ app.get('*', function(req, res){
     });
 });
 
-var port = 3030;
+var port = process.env.PORT || 3030;
 app.listen(port);
 console.log('Listening on port' + port + '...');
 
