@@ -13,7 +13,7 @@ function compile(str, path){
 
 var env = process.env.NODE_ENV || 'development';
 //if ('development' == env) {
-    app.set('views', __dirname + '/Server/views');
+    app.set('views', __dirname + '/Server/Views');
     app.set('view engine', 'jade');
     app.use(morgan('dev'));
     app.use(bodyParser());
