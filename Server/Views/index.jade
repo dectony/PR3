@@ -1,6 +1,18 @@
 extends ../Includes/layout
 
 block main-content
+    .navbar.navbar-inverse.navbar-fixed-top
+        .container.navbar-header
+            a.navbar-brand(href="/") PR3
+                h6 -My test project
+            .navbar-collapse.collapse
+                ul.nav.navbar-nav
+                    li
+                        a(href="/") Home
+                div(ng-include = "'/partials/account/navbar-login'")
     section.content
         div(ng-view)
-    h2= mongoMessage
+
+
+    footer.conatiner.text-center
+        p &copy; 2016 decCo International Ltd.

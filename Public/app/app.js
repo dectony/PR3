@@ -6,9 +6,5 @@ app.config(function($routeProvider, $locationProvider){
         requireBase: false
     });
     $routeProvider
-        .when('/',{templateUrl:'/partials/main', controller:'mainController'})
+        .when('/',{templateUrl:'/partials/main/main', controller:'prMainController'})
 });
-
-app.controller('mainController', function($scope){
-    $scope.myVar = "Hello world angular";
-})
