@@ -1,15 +1,14 @@
 var express = require('express');
 
-
 var app = express();
 var env = process.env.NODE_ENV || 'development';
 
 var config = require('./Server/config/config')[env];
-require('./Server/config/passportConfig')(config)
-require('./Server/config/express')(app, config)
-require('./Server/config/mongoose')(config)
 
-require('./Server/config/routes')(app, config)
+require('./Server/config/express')(app, config);
+require('./Server/config/mongoose')(config);
+require('./Server/config/passport')()
+require('./Server/config/routes')(app)
 
 
 
