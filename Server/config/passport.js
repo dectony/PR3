@@ -8,7 +8,7 @@ var mongoose = require('mongoose'),
 module.exports = function(){
     passport.use(new localStrategy(function(username, password, done){
         User.findOne({userName:username}).exec(function(err, user){
-            if(user){
+            if(user && user.Authenticated(password)){
                 return done(null, user);
             }else{
                 return done(null, false)
