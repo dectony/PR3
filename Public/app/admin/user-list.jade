@@ -1,0 +1,13 @@
+//
+   Created by dec on 13.05.2016.
+
+.container
+    table.table.table-striped
+        thead
+            tr
+                th First Name
+                th Last Name
+        tbody
+        tr(ng-repeat="user in users")
+            td {{user.firstName}}
+            td {{user.lastName}}
