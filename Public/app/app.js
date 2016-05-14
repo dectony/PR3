@@ -17,7 +17,9 @@ app.config(function ($routeProvider, $locationProvider) {
         .when('/admin/users', {
             templateUrl: '/partials/admin/user-list', controller: 'prAdminController',
             resolve: routeRoleCheck.admin
+
         })
+        .when('/signup', {templateUrl: '/partials/account/signup', controller: 'prSignupController'})
 });
 
 angular.module('app').run(function ($rootScope, $location) {

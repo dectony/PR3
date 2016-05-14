@@ -9,6 +9,11 @@ angular.module('app').factory('prNotifier', function(prToastr){
         notifyFail: function(msg){
             prToastr.warning(msg);
             console.log(msg);
+        },
+
+        notifyError: function(msg){
+            prToastr.error(msg);
+            console.log(msg);
         }
     }
 })

@@ -15,6 +15,21 @@ angular.module('app').factory('prAuth', function ($http, prIdentity, $q, prUser)
             });
             return dfd.promise;
         },
+
+        createUser: function(newUserData){
+            var newUser = new prUser(newUserData);
+            var dfd = $q.defer();
+
+            newUser.$save().then(function () {
+                prIdentity.currentUser = newUser;
+                dfd.resolve();
+            },function (response) {
+                dfd.reject(response.data.reason);
+            });
+
+            return dfd.promise;
+        },
+
         logOutUser: function () {
             var dfd = $q.defer();
             $http.post('/logout', {logout: true}).then(function (response) {
