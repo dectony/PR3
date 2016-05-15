@@ -1,6 +1,7 @@
 var mongoose = require('mongoose'),
     auth = require('./auth'),
-    users = require('../controllers/users')
+    users = require('../controllers/users'),
+    cars = require('../controllers/cars')
     User = mongoose.model('User');
 
 module.exports = function (app) {
@@ -12,6 +13,13 @@ module.exports = function (app) {
     app.get('/api/users', auth.requiresRole('admin'), users.getUsers)
 
     app.post('/api/users', users.createUser)
+
+
+    app.get('/api/cars', cars.getCars)
+    app.get('/api/cars/:id', cars.getCarById);
+    app.post('/api/cars', cars.addCar);
+    app.put('/api/cars/:id', cars.updateCar);
+    app.delete('/api/cars/:id', cars.deleteCar);
 
     app.post('/login', auth.authenticate)
 

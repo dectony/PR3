@@ -14,6 +14,10 @@ var userSchema = mongoose.Schema({
 userSchema.methods = {
     Authenticated: function (passwordToMatch) {
         return encryption.hashPassword(this.salt, passwordToMatch) === this.hashed_password;
+    },
+
+    hasRole: function(role) {
+        return this.roles.indexOf(role) > -1;
     }
 }
 
@@ -50,3 +54,5 @@ exports.createDefaultUsers = function () {
         }
     })
 }
+
+exports.UserModel = userSchema;

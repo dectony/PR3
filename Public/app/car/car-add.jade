@@ -1,0 +1,35 @@
+.container
+    .well
+        form.form-horizontal(name="addNewCarForm")
+            fieldset
+                legend New Car Information
+                .form-group
+                    label.col-md-2.control-label(for="title") Title
+                    .col-md-10
+                        input.form-control(name="title", type="text", placeholder="Title", ng-model="car.title", required)
+                .form-group
+                    label.col-md-2.control-label(for="description") Description
+                    .col-md-10
+                        input.form-control(name="description", type="text", placeholder="Description", ng-model="car.description", required)
+                .form-group
+                    label.col-md-2.control-label(for="make") Make
+                    .col-md-10
+                        input.form-control(name="make", type="text", placeholder="Car Make", ng-model="car.make", required)
+                .form-group
+                    label.col-md-2.control-label(for="model") Model
+                    .col-md-10
+                        input.form-control(name="model", type="text", placeholder="Model", ng-model="car.model", required)
+                .form-group
+                    label.col-md-2.control-label(for="mileage") Mileage
+                    .col-md-10
+                        input.form-control(name="mileage", type="text", placeholder="Car mileage", ng-model="car.mileage", required)
+                .form-group
+                    label.col-md-2.control-label(for="year") Year
+                    .col-md-10
+                        input.form-control(name="year", type="text", placeholder="Year", ng-model="car.year", required)
+                .form-group
+                    .col-md-10.col-md-offset-2
+                        .pull-right
+                            button.btn.btn-primary(ng-click="saveCar()", ng-disabled="addNewCarForm.$invalid") Add
+                            | &nbsp;
+                            a.btn.btn-default(href="/") Cancel
