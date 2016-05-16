@@ -5,8 +5,14 @@
                 th Title
                 th Published Date
                 th Duration
+                th Update
+                th Delete
         tbody
         tr(ng-repeat="auction in auctions")
             td {{auction.title}}
-            td {{auction.published | date}}
+            td {{auction.createdDate | date}}
             td {{auction.duration | date}}
+            td
+                button.btn.btn-default(ng-click="updateAuction(auction._id)") Update
+            td
+                button.btn.btn-default(ng-click="deleteAuction(auction)") Delete

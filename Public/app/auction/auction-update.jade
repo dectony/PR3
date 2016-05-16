@@ -1,0 +1,33 @@
+.container
+    .well
+        form.form-horizontal(name="updateAuctionForm")
+            fieldset
+                legend Update Auction Information
+                .form-group
+                    label.col-md-2.control-label(for="title") Title
+                    .col-md-10
+                        input.form-control(name="title", type="text", placeholder="Title", ng-model="auction.title", required)
+                .form-group
+                    label.col-md-2.control-label(for="description") Description
+                    .col-md-10
+                        input.form-control(name="description", type="text", placeholder="Description", ng-model="auction.description", required)
+                .form-group
+                    label.col-md-2.control-label(for="price") Price
+                    .col-md-10
+                        input.form-control(name="price", type="text", placeholder="Car Price", ng-model="auction.price", required)
+                .form-group
+                    label.col-md-2.control-label(for="car") Car
+                    .col-md-10
+                        select(name="carSelector", ng-model="selected" ng-options="option.title for option in cars track by option._id")
+                .form-group
+                    label.col-md-2.control-label(for="finishDate") Finish Date
+                    .col-md-10
+                        input.form-control(id="finishdate", name="finishDate", type="text", placeholder="Finish Date", ng-model="auction.finishDate", required)
+                        span.input-group-addon
+                            span.glyphicon.glyphicon-calendar
+                .form-group
+                    .col-md-10.col-md-offset-2
+                        .pull-right
+                            button.btn.btn-primary(ng-click="saveAuction()", ng-disabled="updateAuctionForm.$invalid") Update
+                            | &nbsp;
+                            a.btn.btn-default(href="/") Cancel

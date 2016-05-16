@@ -25,11 +25,7 @@ angular.module('app').controller('prCarController', function ($scope, prCar, prN
     $scope.updateCar = function (carId) {
         $location.path('/car-update/').search({id: carId});
     }
-
-    $scope.updateCar = function (carId) {
-        $location.path('/car-update/').search({id: carId});
-    }
-
+    
     $scope.deleteCar = function (car) {
         prCar.delete({id: car._id}, function (response) {
             if(response.status === 'OK'){
