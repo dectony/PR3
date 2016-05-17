@@ -15,7 +15,7 @@ angular.module('app').controller('prAuctionController', function ($scope, prAuct
         $scope.auctions.$promise.then(function () {
             $interval(function () {
                 angular.forEach($scope.auctions, function (value, key) {
-                    console.log(value.finishDate);
+                    //console.log(value.finishDate);
                     if (moment().isAfter(value.finishDate)) {
                         value.duration = "finished";
                     } else {
@@ -47,6 +47,10 @@ angular.module('app').controller('prAuctionController', function ($scope, prAuct
 
     $scope.updateAuction = function (auctionId) {
         $location.path('/auction-update/').search({id: auctionId});
+    }
+
+    $scope.placeBid = function (auctionId) {
+        $location.path('/auction-details/').search({id: auctionId});
     }
 
     $scope.deleteAuction = function (auction) {

@@ -1,0 +1,13 @@
+.container
+    .well
+        form.form-horizontal(name="updateAuctionForm")
+            fieldset
+                legend Lot Information
+                .form-group
+                    label.col-md-2.control-label(for="title") Title :{{auction.title}}
+                .form-group
+                    .col-md-10.col-md-offset-2
+                        .pull-right
+                            button.btn.btn-primary(ng-click="saveAuction()", ng-disabled="updateAuctionForm.$invalid") Place a bid
+                            | &nbsp;
+                            a.btn.btn-default(href="/") Cancel

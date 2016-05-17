@@ -7,6 +7,7 @@
                 th Duration
                 th Update
                 th Delete
+                th Place a bid
         tbody
         tr(ng-repeat="auction in auctions")
             td {{auction.title}}
@@ -16,3 +17,5 @@
                 button.btn.btn-default(ng-click="updateAuction(auction._id)") Update
             td
                 button.btn.btn-default(ng-click="deleteAuction(auction)") Delete
+            td
+                button.btn.btn-default(ng-click="placeBid(auction._id)") Place Bid

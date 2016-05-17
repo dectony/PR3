@@ -26,6 +26,8 @@ app.config(function ($routeProvider, $locationProvider) {
         .when('/cars', {templateUrl: '/partials/car/cars-list', controller: 'prCarController'})
         .when('/caradding', {templateUrl: '/partials/car/car-add', controller: 'prCarController'})
         .when('/car-update', {templateUrl: '/partials/car/car-update', controller: 'prCarController'})
+        .when('/auction-details', {templateUrl: '/partials/auction/auction-details', controller: 'prDetailedAuctionController'})
+
     
 });
 
