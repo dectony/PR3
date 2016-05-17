@@ -1,13 +1,17 @@
 .container
     .well
-        form.form-horizontal(name="updateAuctionForm")
+        form.form-horizontal(name="auctionLotForm")
             fieldset
                 legend Lot Information
                 .form-group
                     label.col-md-2.control-label(for="title") Title :{{auction.title}}
+                .form-group(ng-show="newBidData.bidPlaced")
+                    label.col-md-2.control-label(for="title") Your bid :{{bidValue}}
                 .form-group
-                    .col-md-10.col-md-offset-2
+                    label.col-md-2.control-label(for="bidValue") Your bid value
+                    .col-md-10
+                        input.form-control(name="bid", type="text", placeholder="Bid value", ng-model="newBidData.bidValue", required)
                         .pull-right
-                            button.btn.btn-primary(ng-click="saveAuction()", ng-disabled="updateAuctionForm.$invalid") Place a bid
+                            button.btn.btn-primary(ng-click="placeBid()", ng-disabled="auctionLotForm.$invalid") Place a bid
                             | &nbsp;
-                            a.btn.btn-default(href="/") Cancel
+

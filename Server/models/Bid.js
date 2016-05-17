@@ -11,11 +11,11 @@ var BidModel = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Auction'
     },
-    bidValue: {type: Double},
+    bidValue: {type: Number},
     createdDate: {type: Date, default: Date.now}
 });
 
 
-var Auction = mongoose.model('Bid', BidModel);
+var Bid = mongoose.model('Bid', BidModel);
 
-module.exports.AuctionModel = BidModel;
+module.exports.BidModel = BidModel;

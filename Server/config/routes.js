@@ -3,6 +3,7 @@ var mongoose = require('mongoose'),
     users = require('../controllers/users'),
     cars = require('../controllers/cars'),
     auctions = require('../controllers/auctions'),
+    bids = require('../controllers/bids'),
     User = mongoose.model('User');
 
 module.exports = function (app) {
@@ -27,6 +28,11 @@ module.exports = function (app) {
     app.post('/api/auctions', auctions.addAuction);
     app.put('/api/auctions/:id', auctions.updateAuction);
     app.delete('/api/auctions/:id', auctions.deleteAuction);
+
+    app.get('/api/bids', bids.getBidsByAuction);
+    app.get('/api/bids/:id', bids.getLastBidByAuction);
+    app.post('/api/bids', bids.addBid);
+    app.delete('/api/bids/:id', bids.deleteBid);
 
     app.post('/login', auth.authenticate);
 
