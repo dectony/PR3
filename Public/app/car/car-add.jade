@@ -27,6 +27,22 @@
                     label.col-md-2.control-label(for="year") Year
                     .col-md-10
                         input.form-control(name="year", type="text", placeholder="Year", ng-model="car.year", required)
+                h4 Upload on file select
+                button(ngf-select='uploadFiles($files, $invalidFiles)', multiple='', accept='image/*', ngf-max-height='1000', ngf-max-size='1MB')
+                    | Select Files
+                br
+                br
+                |   Files:
+                ul
+                    li(ng-repeat='f in files', style='font:smaller')
+                        | {{f.name}} {{f.$errorParam}}
+                        span.progress(ng-show='f.progress >= 0')
+                            div(style='width:{{f.progress}}%', ng-bind="f.progress + '%'")
+                    li(ng-repeat='f in errFiles', style='font:smaller')
+                        | {{f.name}} {{f.$error}} {{f.$errorParam}}
+                |   {{errorMsg}}
+
+
                 .form-group
                     .col-md-10.col-md-offset-2
                         .pull-right

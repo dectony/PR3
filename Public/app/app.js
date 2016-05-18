@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngResource', 'ngRoute']);
+var app = angular.module('app', ['ngResource', 'ngRoute', 'ngFileUpload']);
 
 app.config(function ($routeProvider, $locationProvider) {
     var routeRoleCheck = {

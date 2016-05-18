@@ -4,9 +4,15 @@ var mongoose = require('mongoose'),
 
 
 exports.getAuctions = function (req, res) {
+    Auction.find().exec(function (err, collection) {
+        res.send(collection);
+    })
+};
+
+exports.getAuctionsByUser = function (req, res) {
     var condition = {};
     if (req.user && !req.user.hasRole('admin')) {
-        condition = {createdBy: req.user._id};
+        condition = {createdBy: req.params.userId};
     }
     Auction.find(condition).exec(function (err, collection) {
         res.send(collection);
@@ -18,7 +24,7 @@ exports.getAuctionById = function (req, res) {
     if (req.user && !req.user.hasRole('admin')) {
         condition.createdBy = req.user._id;
     }
-    Auction.findOne(condition).exec(function (err, auction) {
+    Auction.findOne(condition).populate('car').exec(function (err, auction) {
         res.send(auction);
     })
 };

@@ -4,13 +4,20 @@ var mongoose = require('mongoose'),
     cars = require('../controllers/cars'),
     auctions = require('../controllers/auctions'),
     bids = require('../controllers/bids'),
-    User = mongoose.model('User');
+    User = mongoose.model('User'),
+    upload = require('../config/multer').upload;
 
 module.exports = function (app) {
     app.get('/partials/*', function (req, res) {
         console.log(req.params);
         res.render('../../Public/app/' + req.params[0])
     });
+
+    app.post('/api/upload', upload.single('file'), function (req, res, next)
+    {
+        console.log(req.body);
+        console.log(req.file);
+    })
 
     app.get('/api/users', auth.requiresRole('admin'), users.getUsers);
 
@@ -25,6 +32,7 @@ module.exports = function (app) {
 
     app.get('/api/auctions', auctions.getAuctions);
     app.get('/api/auctions/:id', auctions.getAuctionById);
+    //app.get('/api/auctions/:createdBy', auctions.getAuctionsByUser);
     app.post('/api/auctions', auctions.addAuction);
     app.put('/api/auctions/:id', auctions.updateAuction);
     app.delete('/api/auctions/:id', auctions.deleteAuction);
@@ -41,7 +49,7 @@ module.exports = function (app) {
         res.end();
     })
 
-    app.get('/', function (req, res) {
+    app.get('*', function (req, res) {
         res.render('index', {
             bootstrappedUser: req.user
         });
