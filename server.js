@@ -7,7 +7,6 @@ var config = require('./Server/config/config')[env];
 
 require('./Server/config/express')(app, config);
 require('./Server/config/mongoose')(config);
-require('./Server/config/multer')(config);
 require('./Server/config/passport')();
 require('./Server/config/routes')(app);
 
